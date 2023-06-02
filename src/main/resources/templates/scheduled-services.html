@@ -9,41 +9,43 @@
     <title>Service</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <h1>Scheduled services</h1>
-    <form class="mb-1" action="/scheduled-services" method="GET">
-        <div class="form-check">
-            <input type="checkbox" name="columns" value="firstName" th:checked="${#lists.contains(columns, 'firstName')}"/>
-            <label>First Name</label>
-            <input type="checkbox" name="columns" value="lastName" th:checked="${#lists.contains(columns, 'lastName')}"/>
-            <label>Last Name</label>
-            <input type="checkbox" name="columns" value="carModel" th:checked="${#lists.contains(columns, 'carModel')}"/>
-            <label>Car Model</label>
-            <input type="checkbox" name="columns" value="date" th:checked="${#lists.contains(columns, 'date')}"/>
-            <label>Date</label>
-            <input type="checkbox" name="columns" value="time" th:checked="${#lists.contains(columns, 'time')}"/>
-            <label>Time</label>
-            <input type="checkbox" name="columns" value="remark" th:checked="${#lists.contains(columns, 'remark')}"/>
-            <label>Remark</label>
-            <button class="btn btn-primary" type="submit">Select columns</button>
+    <main layout:fragment="content">
+        <div class="container mt-5 py-3">
+            <h1>Scheduled services</h1>
+            <form class="mb-3" action="/scheduled-services" method="GET">
+                <div class="form-check">
+                    <input type="checkbox" name="columns" value="firstName" th:checked="${#lists.contains(columns, 'firstName')}"/>
+                    <label>First Name</label>
+                    <input type="checkbox" name="columns" value="lastName" th:checked="${#lists.contains(columns, 'lastName')}"/>
+                    <label>Last Name</label>
+                    <input type="checkbox" name="columns" value="carModel" th:checked="${#lists.contains(columns, 'carModel')}"/>
+                    <label>Car Model</label>
+                    <input type="checkbox" name="columns" value="date" th:checked="${#lists.contains(columns, 'date')}"/>
+                    <label>Date</label>
+                    <input type="checkbox" name="columns" value="time" th:checked="${#lists.contains(columns, 'time')}"/>
+                    <label>Time</label>
+                    <input type="checkbox" name="columns" value="remark" th:checked="${#lists.contains(columns, 'remark')}"/>
+                    <label>Remark</label>
+                    <button class="btn btn-primary" type="submit">Select columns</button>
+                </div>
+            </form>
+            <table id="scheduled-services" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th th:each="column: ${columns}" th:text="${column}"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="service: ${scheduledServices}">
+                        <td th:text="${service.id}"></td>
+                        <td th:each="property: ${service.properties}" th:utext="${property}"></td>
+                        <td><a th:href="@{/confirm-service-1(id=${service.id})}">Confirm service</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </form>
-    <table id="scheduled-services" class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th th:each="column: ${columns}" th:text="${column}"></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="service: ${scheduledServices}">
-            <td th:text="${service.id}"></td>
-            <td th:each="property: ${service.properties}" th:utext="${property}"></td>
-            <td><a th:href="@{/confirm-service-1(id=${service.id})}">Confirm service</a></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+    </main>
 </body>
 </html>

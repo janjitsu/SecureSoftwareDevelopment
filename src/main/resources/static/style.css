@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+    background-image: linear-gradient(
+        to right, #70a4e0, #83e9e6
+    );
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+.navbar {
+    background-color: #0f315b;
+}
+
+main {
+    background-color: whitesmoke;
+    border-radius: 15px;
+}
+
+.form-horizontal .form-group {
+    display: flex;
+    flex-flow: row;
+}
+
+.form-horizontal label {
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+footer {
+    background-color: rgba(15, 49, 91, 1);
+    color: var(--light);
+    font-weight: bold;
+}
+
+footer a:any-link {
+    color: var(--light);
+    font: inherit;
+}
+

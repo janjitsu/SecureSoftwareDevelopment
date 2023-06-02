@@ -9,10 +9,15 @@
     <title>Car Details</title>
 </head>
 <body>
-<div layout:fragment="content">
+<main layout:fragment="content">
+  <div class="container mt-5 py-2">
     <h1>Car details</h1>
     <div class="row">
-        <form class="col-5" method="POST" th:action="@{/cars/__${car.id}__}">
+        <div class="col-md-7 col-xs-12 mx-auto mt-3">
+          <p>Picture</p>
+          <img class="rounded img-fluid" th:src="@{'https://loremflickr.com/600/400/' + ${car.manufacturer} + '_' + ${car.model}}" th:alt="@{${car.manufacturer} ${car.model}}" th:title="${car.manufacturer}+' '+${car.model}" width="600" height="400">
+        </div>
+        <form class="col-md-5 col-xs-12 my-3" method="POST" th:action="@{/cars/__${car.id}__}">
             <div class="form-group">
                 <label for="model">Model</label>
                 <input type="text" id="model" name="model" class="form-control" th:value="${car.model}">
@@ -74,6 +79,7 @@
             });
         });
     </script>
-</div>
+  </div>
+</main>
 </body>
 </html>

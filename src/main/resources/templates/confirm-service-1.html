@@ -6,14 +6,18 @@
     <title>Confirm service</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <form action="/confirm-service-2" method="POST">
-        <div class="form-group">
-            <label for="time">Time of day for service</label>
-            <input type="time" required class="form-control" id="time" name="time" />
-        </div>
-        <button type="submit" class="btn btn-primary">Schedule time</button>
-    </form>
-</div>
+<main layout:fragment="content">
+    <div class="container mt-5 py-2">
+        <h1>Confirm Service</h1>
+        <form action="/confirm-service-2" method="POST">
+            <div class="form-group">
+                <label for="time">Time of day for service</label>
+                <input type="time" required class="form-control" id="time" name="time" />
+            </div>
+            <button type="submit" class="btn btn-primary">Schedule time</button>
+        </form>
+
+    </div>
+</main>
 </body>
 </html>
